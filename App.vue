@@ -1,33 +1,37 @@
 <template>
   <view class="container">
-    <text class="text-color-primary">My Vue Native App</text>
-    <text>hi!</text>
-    <text-input
-        :style="{height: 40, width: 100, borderColor: 'gray', borderWidth: 1}"
-        v-model="text"
-    />
-    <text>{{text}}</text>
+    <home-screen></home-screen>
   </view>
 </template>
 
 <script>
+import HomeScreen from "./src/screens/HomeScreen";
+
 export default {
+  components: {HomeScreen},
   data: function() {
     return {
-      text: ''
+
     };
+  },
+  methods: {
+
   }
 }
 </script>
 
 <style>
 .container {
-  background-color: white;
+  background-color: #cdffb0;
   align-items: center;
   justify-content: center;
   flex: 1;
 }
 .text-color-primary {
-  color: blue;
+  border-radius: 25px;
+  padding: 20px;
+  background-color: #a5eeee;
+  color: #000037;
 }
 </style>
+
