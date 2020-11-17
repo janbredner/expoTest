@@ -1,5 +1,5 @@
 <template>
-  <view class="container">
+  <view>
     <home-screen></home-screen>
   </view>
 </template>
@@ -20,18 +20,4 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  background-color: #cdffb0;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-}
-.text-color-primary {
-  border-radius: 25px;
-  padding: 20px;
-  background-color: #a5eeee;
-  color: #000037;
-}
-</style>
 

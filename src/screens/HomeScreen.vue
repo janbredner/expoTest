@@ -1,6 +1,6 @@
 <template>
-  <view class="container">
-    <view class="container">
+  <view>
+    <view>
       <text>sadasd</text>
       <view class="text-color-primary">
         <list-item></list-item>
@@ -32,13 +32,6 @@ export default {
 </script>
 
 <style>
-.container {
-  background-color: #cdffb0;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  padding: 20px;
-}
 .text-color-primary {
   border-radius: 25px;
   padding: 20px;

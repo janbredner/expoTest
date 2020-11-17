@@ -1,5 +1,5 @@
 <template>
-  <view class="container">
+  <view>
     <text class="text-color-primary">My Vue Native App</text>
     <text class="text-color-primary">hi!</text>
     <text-input
@@ -29,12 +29,6 @@ export default {
 </script>
 
 <style>
-.container {
-  background-color: #cdffb0;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-}
 .text-color-primary {
   border-radius: 25px;
   padding: 20px;
