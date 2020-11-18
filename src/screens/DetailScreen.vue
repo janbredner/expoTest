@@ -1,7 +1,8 @@
 <template>
   <view>
     <view>
-      <text>sadasd</text>
+      <text>This is the detailsscreen!</text>
+      <button title="Go to home screen" @press="goToHomeScreen"></button>
       <view class="text-color-primary">
         <list-item></list-item>
       </view>
@@ -25,8 +26,17 @@ export default {
 
     };
   },
-  methods: {
 
+  props: {
+    navigation: {
+      type: Object
+    }
+  },
+
+  methods: {
+    goToHomeScreen() {
+      this.navigation.navigate('Home');
+    }
   }
 }
 </script>
@@ -35,6 +45,7 @@ export default {
 .text-color-primary {
   border-radius: 25px;
   padding: 20px;
+  margin: 5px;
   background-color: #d0eea5;
   color: #173700;
 }

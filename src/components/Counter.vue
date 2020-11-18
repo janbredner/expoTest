@@ -16,7 +16,6 @@
 import ListItem from "./ListItem";
 import store from '../store';
 
-
 export default {
   components: {ListItem},
   data: function() {
@@ -43,6 +42,7 @@ export default {
 .text-color-primary {
   border-radius: 25px;
   padding: 20px;
+  margin: 5px;
   background-color: #a5eeee;
   color: #000037;
 }

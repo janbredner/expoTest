@@ -32,6 +32,7 @@ export default {
 .text-color-primary {
   border-radius: 25px;
   padding: 20px;
+  margin: 5px;
   background-color: #a5eeee;
   color: #000037;
 }

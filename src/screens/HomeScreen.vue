@@ -1,7 +1,8 @@
 <template>
-  <view>
+  <view class="mainstyle">
     <view>
-      <text>sadasd</text>
+      <text>This is the homescreen!</text>
+      <button title="Go to detail screen" @press="goToDetailScreen"></button>
       <view class="text-color-primary">
         <list-item></list-item>
       </view>
@@ -20,21 +21,37 @@ import ListItem from "../components/ListItem";
 
 export default {
   components: {Contend, Statusbar, ListItem},
+
   data: function() {
     return {
 
     };
   },
-  methods: {
 
+  props: {
+    navigation: {
+      type: Object
+    }
+  },
+
+  methods: {
+    goToDetailScreen() {
+      this.navigation.navigate('Detail');
+    }
   }
 }
 </script>
 
 <style>
+
+.mainstyle {
+  background-color: #d0eea5;
+}
+
 .text-color-primary {
   border-radius: 25px;
   padding: 20px;
+  margin: 5px;
   background-color: #a5eeee;
   color: #000037;
 }
