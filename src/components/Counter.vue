@@ -1,11 +1,12 @@
 <template>
-  <view>
-    <button
-        :on-press="count"
-        title="Count"
-        color="#000037"
-        accessibility-label="Learn more about this purple button"
-    />
+  <view class="container">
+    <view class="button-container">
+      <button
+          :on-press="count"
+          title="Count"
+          color="red"
+      />
+    </view>
     <text class="text-color-primary">Anzahl gekickt: {{counter}}</text>
     <list-item></list-item>
   </view>
@@ -39,6 +40,16 @@ export default {
 </script>
 
 <style>
+
+.container{
+  margin-left: 50px;
+  text-align: center;
+}
+
+.button-container{
+  width: 75px;
+}
+
 .text-color-primary {
   border-radius: 25px;
   padding: 20px;

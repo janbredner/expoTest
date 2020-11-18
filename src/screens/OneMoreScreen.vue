@@ -1,7 +1,7 @@
 <template>
   <view>
     <view>
-      <button title="Go to home screen" @press="goToHomeScreen"></button>
+      <Text>Nothing to see here!</Text>
     </view>
   </view>
 </template>

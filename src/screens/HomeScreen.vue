@@ -1,24 +1,17 @@
 <template>
   <view>
-    <view>
-      <button title="Go to detail screen" @press="goToDetailScreen"></button>
-      <button title="Go to one more screen" @press="goToOneMoreScreen"></button>
       <view>
         <counter></counter>
       </view>
-    </view>
   </view>
 </template>
 
 <script>
 
 import Counter from "../components/Counter";
-import Statusbar from "../components/Statusbar";
-import Contend from "../components/Contend";
-import ListItem from "../components/ListItem";
 
 export default {
-  components: {Contend, Statusbar, ListItem, Counter},
+  components: {Counter},
 
   data: function() {
     return {

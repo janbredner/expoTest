@@ -20,26 +20,35 @@ const StackNavigator = createStackNavigator(
     {
       Home: {
         screen: HomeScreen,
-        navigationOptions:{
-          headerTitle: () => <Header></Header>
-        },
+        navigationOptions: ({navigation}) => {
+          return {
+            headerTitle: () => <Header navigation={navigation} title='Home' />,
+          };
+        }
       },
+
       Detail: {
         screen: DetailScreen,
-        navigationOptions:{
-          title: 'DetailScreen',
-        },
+        navigationOptions: ({navigation}) => {
+          return {
+            headerTitle: () => <Header navigation={navigation} title='Detail' />,
+          };
+        }
       },
+
       OneMore: {
         screen: OneMoreScreen,
-        navigationOptions:{
-          title: 'OneMoreScreen',
-        },
+        navigationOptions: ({navigation}) => {
+          return {
+            headerTitle: () => <Header navigation={navigation} title='OneMore' />,
+          };
+        }
       }
     },
     {
       defaultNavigationOptions: {
         title: 'asd',
+        headerLeft: null,
         headerStyle:{
           backgroundColor:'#b1ea51',
           height: 20,

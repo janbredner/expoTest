@@ -1,8 +1,7 @@
 <template>
   <view>
     <view>
-      <button title="Go to home screen" @press="goToHomeScreen"></button>
-      <view class="text-color-primary">
+     <view class="text-color-primary">
         <list-item></list-item>
       </view>
       <view>
