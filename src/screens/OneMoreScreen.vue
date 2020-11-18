@@ -2,24 +2,12 @@
   <view>
     <view>
       <button title="Go to home screen" @press="goToHomeScreen"></button>
-      <view class="text-color-primary">
-        <list-item></list-item>
-      </view>
-      <view>
-        <contend></contend>
-      </view>
-      <statusbar></statusbar>
     </view>
   </view>
 </template>
 
 <script>
-import Statusbar from "../components/Statusbar";
-import Contend from "../components/Contend";
-import ListItem from "../components/ListItem";
-
 export default {
-  components: {Contend, Statusbar, ListItem},
   data: function() {
     return {
 

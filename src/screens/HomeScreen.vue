@@ -1,26 +1,24 @@
 <template>
-  <view class="mainstyle">
+  <view>
     <view>
-      <text>This is the homescreen!</text>
       <button title="Go to detail screen" @press="goToDetailScreen"></button>
-      <view class="text-color-primary">
-        <list-item></list-item>
-      </view>
+      <button title="Go to one more screen" @press="goToOneMoreScreen"></button>
       <view>
-        <contend></contend>
+        <counter></counter>
       </view>
-      <statusbar></statusbar>
     </view>
   </view>
 </template>
 
 <script>
+
+import Counter from "../components/Counter";
 import Statusbar from "../components/Statusbar";
 import Contend from "../components/Contend";
 import ListItem from "../components/ListItem";
 
 export default {
-  components: {Contend, Statusbar, ListItem},
+  components: {Contend, Statusbar, ListItem, Counter},
 
   data: function() {
     return {
@@ -37,16 +35,16 @@ export default {
   methods: {
     goToDetailScreen() {
       this.navigation.navigate('Detail');
+    },
+
+    goToOneMoreScreen() {
+      this.navigation.navigate('OneMore');
     }
   }
 }
 </script>
 
 <style>
-
-.mainstyle {
-  background-color: #d0eea5;
-}
 
 .text-color-primary {
   border-radius: 25px;
