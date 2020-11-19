@@ -1,13 +1,7 @@
 <template>
-  <view>
-    <view>
-     <view class="text-color-primary">
-        <list-item></list-item>
-      </view>
-      <view>
-        <contend></contend>
-      </view>
-    </view>
+  <view class="test">
+      <list-item></list-item>
+      <contend></contend>
   </view>
 </template>
 
@@ -32,18 +26,14 @@ export default {
   methods: {
     goToHomeScreen() {
       this.navigation.navigate('Home');
-    }
+    },
   }
 }
 </script>
 
 <style>
-
-.text-color-primary {
-  border-radius: 25px;
-  padding: 20px;
-  margin: 5px;
-  background-color: #d0eea5;
-  color: #173700;
+.test{
+  height: 100%;
 }
+
 </style>

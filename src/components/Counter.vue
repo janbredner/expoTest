@@ -1,24 +1,19 @@
 <template>
-  <view class="container">
-    <view class="button-container">
-      <button
-          :on-press="count"
-          title="Count"
-          color="red"
-      />
-    </view>
-    <text class="text-color-primary">Anzahl gekickt: {{counter}}</text>
+  <view>
+    <app-button title="count" :action=count></app-button>
+    <app-text :text="'click counter: ' + counter"></app-text>
     <list-item></list-item>
   </view>
 </template>
 
 <script>
-
+import AppText from "../components/base/Text";
+import AppButton from "./base/Button";
 import ListItem from "./ListItem";
 import store from '../store';
 
 export default {
-  components: {ListItem},
+  components: {ListItem, AppText, AppButton},
   data: function() {
     return {
 
@@ -40,11 +35,6 @@ export default {
 </script>
 
 <style>
-
-.container{
-  margin-left: 50px;
-  text-align: center;
-}
 
 .button-container{
   width: 75px;

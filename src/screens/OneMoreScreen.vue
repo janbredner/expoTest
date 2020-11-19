@@ -1,26 +1,31 @@
 <template>
   <view>
     <view>
-      <Text>Nothing to see here!</Text>
-      <app-button title="Hi"></app-button>
-      <text v-for="item in items" :key="item.id"> {{item.message}}</text>
-      <button title="cars"
-      :on-press="loadCars"></button>
-      <text>{{info}}</text>
+      <app-text text="Nothing to see here!"></app-text>
+      <app-button title="Hi" :action=loadCars ></app-button>
+      <view v-for="item in items" :key="item.id">
+        <app-text :text="item.message"></app-text>
+      </view>
+      <app-button title="cars" :action="loadCars"></app-button>
+      <view v-for="car in cars" :key="car.id">
+        <app-text :text="'ID : ' + car.id + '   Title: ' + car.title "></app-text>
+      </view>
     </view>
   </view>
 </template>
 
 <script>
 
+import AppText from "../components/base/Text";
 import AppButton from "../components/base/Button";
 import store from "../store";
 import axios from 'axios';
 
+
 export default {
   data: function() {
     return {
-      cars: [],
+      cars: null,
       info: null
     };
   },
@@ -31,7 +36,7 @@ export default {
     },
   },
 
-  components: {AppButton},
+  components: {AppButton, AppText},
 
   props: {
     navigation: {
@@ -44,7 +49,7 @@ export default {
       axios
           //172.17.100.2 host IP address in Nox player
           .get('http://172.17.100.2:8000/api/cars')
-          .then(response => (this.info = response))
+          .then(response => (this.cars = response.data))
 
     },
   }

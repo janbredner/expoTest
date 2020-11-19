@@ -21,14 +21,23 @@ const store = new Vuex.Store({
                 message: 'vcxy'
             }
         ],
+        user: null,
+        loggedIn: false,
+        token: '',
     },
 
     getters: {
+
         getCounter(state, getters){
             return state.counter;
         },
+
         getItems(state,getters){
             return state.items;
+        },
+
+        getUser(state,getters){
+            return state.user;
         }
     },
 
@@ -39,6 +48,9 @@ const store = new Vuex.Store({
     mutations: {
         setCounter(state, counter){
             state.counter = counter;
+        },
+        setUser(state, user){
+            state.user = user;
         }
     },
 

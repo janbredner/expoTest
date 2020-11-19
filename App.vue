@@ -55,7 +55,7 @@ const StackNavigator = createStackNavigator(
         },
       },
       headerMode: 'screen',
-      cardStyle:{backgroundColor:'#d0eea5'
+      cardStyle:{backgroundColor:'#d0eea5',
       }
     },
     {

@@ -1,21 +1,24 @@
 <template>
   <view>
-    <text class="text-color-primary">My Vue Native App</text>
-    <text class="text-color-primary">hi!</text>
+    <app-text text="My Vue Native App"></app-text>
+    <app-text text="hi!"></app-text>
     <text-input
         :style="{height: 40, width: 100, borderColor: 'gray', borderWidth: 1}"
         v-model="text"
     />
-    <text class="text-color-primary">{{text}}</text>
+    <app-text :text="text"></app-text>
     <counter></counter>
   </view>
 </template>
 
 <script>
 import Counter from "./Counter";
+import AppText from "./base/Text";
+import App from "../../App";
+
 
 export default {
-  components: {Counter},
+  components: {App, Counter, AppText},
 
   data: function() {
     return {
@@ -29,11 +32,4 @@ export default {
 </script>
 
 <style>
-.text-color-primary {
-  border-radius: 25px;
-  padding: 20px;
-  margin: 5px;
-  background-color: #a5eeee;
-  color: #000037;
-}
 </style>

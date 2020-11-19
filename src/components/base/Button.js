@@ -4,9 +4,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 TouchableOpacity.defaultProps = { activeOpacity: 0.7 };
 
-export default function AppButton({onPress,title}){
+export default function AppButton({action,title}){
     return(
-        <TouchableOpacity onPress={onPress} >
+        <TouchableOpacity onPress={action} >
             <LinearGradient
                 colors={[colorOut, colorIn, colorOut]}
                 style={styles.appButtonContainer}>
@@ -16,7 +16,7 @@ export default function AppButton({onPress,title}){
     );
 }
 const colorOut = '#187e08';
-const colorIn = '#44983b';
+const colorIn = '#51bf46';
 
 const styles = StyleSheet.create({
     appButtonContainer: {
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 12,
         marginHorizontal:10,
+        marginVertical:5,
         alignItems: 'center',
     },
     appButtonText: {
