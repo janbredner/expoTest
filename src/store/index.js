@@ -32,12 +32,20 @@ const store = new Vuex.Store({
             return state.counter;
         },
 
-        getItems(state,getters){
+        getItems(state, getters){
             return state.items;
         },
 
-        getUser(state,getters){
+        getUser(state, getters){
             return state.user;
+        },
+
+        isLoggedIn(state, getters){
+            return state.loggedIn;
+        },
+
+        getToken(state, getters){
+            return state.token;
         }
     },
 
@@ -46,11 +54,27 @@ const store = new Vuex.Store({
     },
 
     mutations: {
+
         setCounter(state, counter){
             state.counter = counter;
         },
+
         setUser(state, user){
             state.user = user;
+        },
+
+        setToken(state, token){
+          state.token = token;
+        },
+
+        login(state){
+          state.loggedIn = true;
+        },
+
+        logout(state){
+          state.loggedIn = false;
+          state.user = null;
+          state.token = '';
         }
     },
 

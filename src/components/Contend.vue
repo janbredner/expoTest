@@ -14,11 +14,9 @@
 <script>
 import Counter from "./Counter";
 import AppText from "./base/Text";
-import App from "../../App";
-
 
 export default {
-  components: {App, Counter, AppText},
+  components: {Counter, AppText},
 
   data: function() {
     return {

@@ -1,21 +1,25 @@
 <template>
   <view>
-    <view class="logInFormLine">
-      <view class="logInFormText">
-        <app-text text="e-mail:"></app-text>
+    <view>
+      <view class="logInFormLine">
+        <view class="logInFormText">
+          <app-text text="e-mail:"></app-text>
+        </view>
+        <text-input class="logInFormInput" v-model="email" />
       </view>
-      <text-input class="logInFormInput" v-model="email" />
-    </view>
-    <view class="logInFormLine">
-      <view class="logInFormText">
-        <app-text text="password:"></app-text>
+      <view class="logInFormLine">
+        <view class="logInFormText">
+          <app-text text="password:"></app-text>
+        </view>
+        <text-input class="logInFormInput" v-model="password" />
       </view>
-      <text-input class="logInFormInput" v-model="password" />
     </view>
     <app-button title="Log-in"></app-button>
     <button title="real log-in atm" :on-press="logIn"></button>
-    <text>{{info}}</text>
-    <text>{{data}}</text>
+    <text>{{user}}</text>
+    <text>{{token}}</text>
+    <text>{{loggedIn}}</text>
+    <button title="real log-out atm" :on-press="logOut"></button>
     <counter></counter>
   </view>
 </template>
@@ -36,7 +40,6 @@ export default {
     return {
       email: '',
       password: '',
-      info: '',
       data: '',
     };
   },
@@ -44,6 +47,25 @@ export default {
   props: {
     navigation: {
       type: Object
+    }
+  },
+
+  computed:{
+    user(){
+      return store.getters.getUser;
+    },
+
+    token(){
+      return store.getters.getToken
+    },
+
+    loggedIn(){
+      if(store.getters.isLoggedIn){
+        return "Eingeloggt";
+      }
+      else{
+        return "Nicht eingeloggt";
+      }
     }
   },
 
@@ -59,15 +81,19 @@ export default {
               this.data = response.data;
 
               if(Object.keys(this.data).includes("token")){
-                this.info = this.data.token;
-                this.data = this.data.user;
-                store.commit('setUser', this.data);
-                this.info = store.getters.getUser;
+                this.data = this.data;
+                store.commit('setUser', this.data.user);
+                store.commit('login');
+                store.commit('setToken', this.data.token);
+                this.data = "success";
               }
               else{
-                this.info = "failed";
+                this.data = "failed";
               }
             })
+    },
+    logOut: function(){
+      store.commit('logout');
     }
   }
 }
