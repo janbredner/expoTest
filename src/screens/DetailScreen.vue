@@ -7,18 +7,16 @@
       <view>
         <contend></contend>
       </view>
-      <statusbar></statusbar>
     </view>
   </view>
 </template>
 
 <script>
-import Statusbar from "../components/Statusbar";
 import Contend from "../components/Contend";
 import ListItem from "../components/ListItem";
 
 export default {
-  components: {Contend, Statusbar, ListItem},
+  components: {Contend, ListItem},
   data: function() {
     return {
 
