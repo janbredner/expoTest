@@ -2,17 +2,22 @@
   <view>
     <view>
       <Text>Nothing to see here!</Text>
+      <app-button title="Hi"></app-button>
     </view>
   </view>
 </template>
 
 <script>
+
+import AppButton from "../components/base/Button";
+
 export default {
   data: function() {
     return {
 
     };
   },
+  components: {AppButton},
 
   props: {
     navigation: {
