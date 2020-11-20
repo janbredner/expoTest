@@ -1,11 +1,13 @@
 <template>
   <view>
-    <text>{{user}}</text>
-    <text>{{token}}</text>
+    <background></background>
+    <app-text :text=user.name></app-text>
+    <app-text :text=user.email></app-text>
+    <app-text :text=user.address></app-text>
+    <app-text :text=token></app-text>
     <view>
       <app-button title="Log-out" :action="logOut"></app-button>
     </view>
-    <counter></counter>
   </view>
 </template>
 
@@ -14,11 +16,12 @@
 import Counter from "../components/Counter";
 import AppText from "../components/base/Text";
 import AppButton from "../components/base/Button";
+import Background from "../components/base/Background";
 import store from '../store';
 
 
 export default {
-  components: {Counter, AppText, AppButton},
+  components: {Counter, AppText, AppButton, Background},
 
   props: {
     navigation: {

@@ -146,6 +146,8 @@ const store = new Vuex.Store({
           state.loggedIn = false;
           state.user = [{
               name: '',
+              email: '',
+              address: '',
           }];
           state.token = '';
         }

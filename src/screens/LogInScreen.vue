@@ -1,5 +1,7 @@
 <template>
   <view>
+    <background></background>
+
     <view class="logInFormLine">
       <view class="logInFormText">
         <app-text text="e-mail:"></app-text>
@@ -15,6 +17,7 @@
     <app-button title="Log-in" :action="logIn"></app-button>
     <button title="fast test logIn" :on-press="logInFast"></button>
     <text>{{message}}</text>
+
   </view>
 </template>
 
@@ -23,10 +26,11 @@
 import Counter from "../components/Counter";
 import AppText from "../components/base/Text";
 import AppButton from "../components/base/Button";
+import Background from "../components/base/Background";
 import store from '../store';
 
 export default {
-  components: {Counter, AppText, AppButton},
+  components: {Counter, AppText, AppButton, Background},
 
   props: {
     navigation: {

@@ -1,5 +1,6 @@
 <template>
   <view>
+    <background></background>
     <view>
       <app-text text="Nothing to see here!"></app-text>
       <app-button title="cars" :action="loadCars"></app-button>
@@ -14,11 +15,12 @@
 
 import AppText from "../components/base/Text";
 import AppButton from "../components/base/Button";
+import Background from "../components/base/Background";
 import store from "../store";
 
 export default {
 
-  components: {AppButton, AppText},
+  components: {AppButton, AppText, Background},
 
   computed:{
     message(){ return store.getters.getMessage },
