@@ -64,6 +64,47 @@ const store = new Vuex.Store({
                 .then(response => (commit('setCars', response.data)))
         },
 
+        async logIn({state, commit}){
+            await axios
+                //172.17.100.2 host IP address in Nox player
+                .post('http://172.17.100.2:8000/api/login', {
+                    email: state.email,
+                    password: state.password
+                })
+                .then(response => {
+                    let data = response.data;
+
+                    if (Object.keys(data).includes("token")) {
+                        store.commit('setUser', data.user);
+                        store.commit('login');
+                        store.commit('setToken', data.token);
+                        store.commit('setMessage', '');
+                    } else {
+                        store.commit('setMessage', 'Falsche logIn Daten!');
+                    }
+                });
+        },
+
+        async logInFast() {
+            await axios
+                //172.17.100.2 host IP address in Nox player
+                .post('http://172.17.100.2:8000/api/login', {
+                    email: 'jan@web.de',
+                    password: 'jan'
+                })
+                .then(response => {
+                    let data = response.data;
+
+                    if (Object.keys(data).includes("token")) {
+                        store.commit('setUser', data.user);
+                        store.commit('login');
+                        store.commit('setToken', data.token);
+                        store.commit('setMessage', '');
+                    } else {
+                        store.commit('setMessage', 'Falsche logIn Daten!');
+                    }
+                });
+        },
 
     },
 

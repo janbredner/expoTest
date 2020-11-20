@@ -14,7 +14,6 @@
     </view>
     <app-button title="Log-in" :action="logIn"></app-button>
     <button title="fast test logIn" :on-press="logInFast"></button>
-    <counter></counter>
     <text>{{message}}</text>
   </view>
 </template>
@@ -24,7 +23,6 @@
 import Counter from "../components/Counter";
 import AppText from "../components/base/Text";
 import AppButton from "../components/base/Button";
-import axios from "axios";
 import store from '../store';
 
 export default {
@@ -65,50 +63,16 @@ export default {
   },
 
   methods: {
-    logIn: async function(){
-      await axios
-          //172.17.100.2 host IP address in Nox player
-          .post('http://172.17.100.2:8000/api/login', {
-            email: store.getters.getEmail,
-            password: store.getters.getPassword
-          })
-          .then(response => {
-            this.data = response.data;
-
-            if (Object.keys(this.data).includes("token")) {
-              this.data = this.data;
-              store.commit('setUser', this.data.user);
-              store.commit('login');
-              store.commit('setToken', this.data.token);
-              store.commit('setMessage', '');
-              this.navigation.navigate('Home');
-            } else {
-              store.commit('setMessage', 'Falsche logIn Daten!');
-            }
-          });
+    async logIn() {
+        await store.dispatch('logIn');
+        if(store.getters.isLoggedIn)
+          this.navigation.navigate('Home');
     },
 
-    logInFast: async function () {
-      await axios
-          //172.17.100.2 host IP address in Nox player
-          .post('http://172.17.100.2:8000/api/login', {
-            email: 'jan@web.de',
-            password: 'jan'
-          })
-          .then(response => {
-            this.data = response.data;
-
-            if (Object.keys(this.data).includes("token")) {
-              this.data = this.data;
-              store.commit('setUser', this.data.user);
-              store.commit('login');
-              store.commit('setToken', this.data.token);
-              this.navigation.navigate('Home');
-              this.data = '';
-            } else {
-              this.data = 'Falsche logIn Daten!';
-            }
-          });
+    async logInFast() {
+      await store.dispatch('logInFast');
+      if(store.getters.isLoggedIn)
+        this.navigation.navigate('Home');
     },
   }
 }
@@ -123,6 +87,8 @@ export default {
   width: 150px;
   border-color: #3fc601;
   border-width: 1px;
+  margin: 2px;
+  padding-left: 5px;
 }
 
 .logInFormLine{
