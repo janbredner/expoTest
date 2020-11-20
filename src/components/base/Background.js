@@ -1,6 +1,7 @@
 import React from "react";
-import {View, Button, StyleSheet, TouchableOpacity, Text, Dimensions} from "react-native";
+import {StyleSheet, TouchableOpacity, Dimensions} from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
+import store from "../../store";
 
 TouchableOpacity.defaultProps = { activeOpacity: 0.7 };
 
@@ -10,13 +11,13 @@ const windowHeight = Dimensions.get('window').height;
 export default function Background(){
     return(
             <LinearGradient
-                colors={[colorIn, colorOut]}
+                colors={[colorUp, colorDown]}
                 style={styles.appButtonContainer}>
             </LinearGradient>
     );
 }
-const colorOut = '#55ba0e';
-const colorIn = '#bee977';
+const colorDown = store.state.backgroundLowerColor;
+const colorUp = store.state.backgroundUpperColor;
 
 const styles = StyleSheet.create({
     appButtonContainer: {

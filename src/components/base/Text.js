@@ -1,5 +1,6 @@
 import React from "react";
 import {View, StyleSheet, Text} from "react-native";
+import store from "../../store";
 
 export default function AppText({text}){
     return (
@@ -14,7 +15,7 @@ export default function AppText({text}){
 
 const styles = StyleSheet.create({
     appTextContainer: {
-        backgroundColor: '#b9e273',
+        //backgroundColor: '#b9e273',
         padding : 5,
         marginHorizontal:20,
         marginVertical:2,
@@ -23,6 +24,6 @@ const styles = StyleSheet.create({
 
     appText: {
         fontSize: 18,
-        color: "#364c05",
+        color: store.state.textNormalColor,
     }
 });

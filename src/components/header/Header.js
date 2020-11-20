@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Dimensions, Text, View, Image, TouchableOpacity} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import store from "../../store";
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -9,7 +10,7 @@ export default function Header({navigation, title, loggedIn, user}) {
         return (
             <View>
                 <LinearGradient
-                    colors={['#bee977', '#55ba0e']}>
+                    colors={[colorUp, colorDown]}>
                     <View style ={styles.container}>
                         <View style ={styles.logoSide}>
                             <Image style={styles.logo} source={require('../../../assets/logo.png')}/>
@@ -27,7 +28,7 @@ export default function Header({navigation, title, loggedIn, user}) {
         return (
             <View>
                 <LinearGradient
-                    colors={['#bee977', '#55ba0e']}>
+                    colors={[colorUp, colorDown]}>
                     <View style={styles.container}>
                         <View style={styles.logoSide}>
                             <Image style={styles.logo} source={require('../../../assets/logo.png')}/>
@@ -61,14 +62,16 @@ export default function Header({navigation, title, loggedIn, user}) {
                 </LinearGradient>
             </View>
         );
-    }ß
+    }
 }
 
+const colorUp = store.state.headerUpperColor;
+const colorDown = store.state.headerLowerColor;
 
 const styles = StyleSheet.create({
     text:{
         marginHorizontal: 10,
-        color: '#034001',
+        color: store.state.headerTextColor,
     },
     container:{
         top: 0,

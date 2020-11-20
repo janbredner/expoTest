@@ -6,6 +6,8 @@ import VueAxios from "vue-axios";
 Vue.use(Vuex)
 Vue.use(VueAxios, axios)
 
+const url = 'http://172.17.100.2:8000/api/';
+
 const store = new Vuex.Store({
 
     state: {
@@ -19,10 +21,22 @@ const store = new Vuex.Store({
 
         //verwendet zum Anzeigen von reinen Daten- wird später entfernt
         message: '',
+
+        buttonTextColor: "#ebfcc2",
+        buttonInnerColor: '#51bf46',
+        buttonOuterColor: '#187e08',
+
+        textNormalColor: '#073903',
+
+        backgroundUpperColor: '#bee977',
+        backgroundLowerColor: '#55ba0e',
+
+        headerTextColor: '#073903',
+        headerUpperColor: '#bee977',
+        headerLowerColor: '#55ba0e',
     },
 
     getters: {
-
         getMessage(state){
             return state.message;
         },
@@ -60,14 +74,14 @@ const store = new Vuex.Store({
         async loadCars({state, commit}){
             await axios
                 //172.17.100.2 host IP address in Nox player
-                .get('http://172.17.100.2:8000/api/cars')
+                .get(url + 'cars')
                 .then(response => (commit('setCars', response.data)))
         },
 
         async logIn({state, commit}){
             await axios
                 //172.17.100.2 host IP address in Nox player
-                .post('http://172.17.100.2:8000/api/login', {
+                .post(url + 'login', {
                     email: state.email,
                     password: state.password
                 })
@@ -88,7 +102,7 @@ const store = new Vuex.Store({
         async logInFast() {
             await axios
                 //172.17.100.2 host IP address in Nox player
-                .post('http://172.17.100.2:8000/api/login', {
+                .post(url + 'login', {
                     email: 'jan@web.de',
                     password: 'jan'
                 })
@@ -152,8 +166,6 @@ const store = new Vuex.Store({
           state.token = '';
         }
     },
-
-
 })
 
 export default store;

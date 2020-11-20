@@ -1,6 +1,7 @@
 import React from "react";
-import {View, Button, StyleSheet, TouchableOpacity, Text} from "react-native";
+import {StyleSheet, TouchableOpacity, Text} from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
+import store from "../../store";
 
 TouchableOpacity.defaultProps = { activeOpacity: 0.7 };
 
@@ -15,8 +16,8 @@ export default function AppButton({action,title}){
         </TouchableOpacity>
     );
 }
-const colorOut = '#187e08';
-const colorIn = '#51bf46';
+const colorOut = store.state.buttonOuterColor;
+const colorIn = store.state.buttonInnerColor;
 
 const styles = StyleSheet.create({
     appButtonContainer: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     },
     appButtonText: {
         fontSize: 18,
-        color: "#effad8",
+        color: store.state.buttonTextColor,
         fontWeight: "bold",
         alignSelf: "center",
         textTransform: "uppercase"
