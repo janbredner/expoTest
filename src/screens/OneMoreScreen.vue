@@ -44,6 +44,12 @@ export default {
     }
   },
 
+  beforeMount() {
+    if(!store.getters.isLoggedIn){
+      this.navigation.navigate('LogIn');
+    }
+  },
+
   methods: {
     loadCars: function(){
       axios

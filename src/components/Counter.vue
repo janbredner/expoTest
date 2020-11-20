@@ -28,7 +28,7 @@ export default {
   methods: {
     count: function() {
 
-      store.commit('setCounter', store.state.counter + 1)
+      store.commit('setCounter', store.state.counter + 1);
     },
   }
 }
@@ -36,15 +36,4 @@ export default {
 
 <style>
 
-.button-container{
-  width: 75px;
-}
-
-.text-color-primary {
-  border-radius: 25px;
-  padding: 20px;
-  margin: 5px;
-  background-color: #a5eeee;
-  color: #000037;
-}
 </style>

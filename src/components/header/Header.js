@@ -4,43 +4,62 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 const windowWidth = Dimensions.get('window').width;
 
-export default function Header({navigation, title}) {
-    return (
-        <View>
-            <LinearGradient
-            colors={['#bee977', '#55ba0e']}>
-            <View style ={styles.container}>
-                <View style ={styles.logoSide}>
-                    <Image style={styles.logo} source={require('../../../assets/logo.png')}/>
-                    <Text style={styles.text}>
-                        {title}
-                    </Text>
-                </View>
-                <View style={styles.menue}>
-                    <TouchableOpacity style={styles.button}
-                        onPress={() => {
-                        navigation.navigate('Home');
-                    }}>
-                    <Image style={styles.image} source={require('../../../assets/home.png')}/>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.button}
-                        onPress={() => {
-                            navigation.navigate('Detail');
-                        }}>
-                        <Image style={styles.image} source={require('../../../assets/detail.png')}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}
-                        onPress={() => {
-                            navigation.navigate('OneMore');
-                        }}>
-                        <Image style={styles.image} source={require('../../../assets/one-more.png')}/>
-                    </TouchableOpacity>
-                </View>
+export default function Header({navigation, title, loggedIn}) {
+    if(!loggedIn){
+        return (
+            <View>
+                <LinearGradient
+                    colors={['#bee977', '#55ba0e']}>
+                    <View style ={styles.container}>
+                        <View style ={styles.logoSide}>
+                            <Image style={styles.logo} source={require('../../../assets/logo.png')}/>
+                            <Text style={styles.text}>
+                                {title}
+                            </Text>
+                        </View>
+                    </View>
+                </LinearGradient>
             </View>
-            </LinearGradient>
-        </View>
-    );
+        );
+    }
+    if(loggedIn) {
+        return (
+            <View>
+                <LinearGradient
+                    colors={['#bee977', '#55ba0e']}>
+                    <View style={styles.container}>
+                        <View style={styles.logoSide}>
+                            <Image style={styles.logo} source={require('../../../assets/logo.png')}/>
+                            <Text style={styles.text}>
+                                {title}
+                            </Text>
+                        </View>
+                        <View style={styles.menue}>
+                            <TouchableOpacity style={styles.button}
+                                              onPress={() => {
+                                                  navigation.navigate('Home');
+                                              }}>
+                                <Image style={styles.image} source={require('../../../assets/home.png')}/>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.button}
+                                              onPress={() => {
+                                                  navigation.navigate('Detail');
+                                              }}>
+                                <Image style={styles.image} source={require('../../../assets/detail.png')}/>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.button}
+                                              onPress={() => {
+                                                  navigation.navigate('OneMore');
+                                              }}>
+                                <Image style={styles.image} source={require('../../../assets/one-more.png')}/>
+                            </TouchableOpacity>
+
+                        </View>
+                    </View>
+                </LinearGradient>
+            </View>
+        );
+    }
 }
 
 

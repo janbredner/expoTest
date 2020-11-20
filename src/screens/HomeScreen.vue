@@ -1,25 +1,11 @@
 <template>
   <view>
-    <view>
-      <view class="logInFormLine">
-        <view class="logInFormText">
-          <app-text text="e-mail:"></app-text>
-        </view>
-        <text-input class="logInFormInput" v-model="email" />
-      </view>
-      <view class="logInFormLine">
-        <view class="logInFormText">
-          <app-text text="password:"></app-text>
-        </view>
-        <text-input class="logInFormInput" v-model="password" />
-      </view>
-    </view>
-    <app-button title="Log-in"></app-button>
-    <button title="real log-in atm" :on-press="logIn"></button>
     <text>{{user}}</text>
     <text>{{token}}</text>
     <text>{{loggedIn}}</text>
-    <button title="real log-out atm" :on-press="logOut"></button>
+    <view v-if = "isLoggedIn()">
+      <button title="real log-out atm" :on-press="logOut"></button>
+    </view>
     <counter></counter>
   </view>
 </template>
@@ -50,68 +36,38 @@ export default {
     }
   },
 
+  beforeMount() {
+    if(!store.getters.isLoggedIn){
+      this.navigation.navigate('LogIn');
+    }
+  },
   computed:{
     user(){
       return store.getters.getUser;
     },
 
     token(){
-      return store.getters.getToken
+      return store.getters.getToken;
     },
 
     loggedIn(){
-      if(store.getters.isLoggedIn){
-        return "Eingeloggt";
-      }
-      else{
-        return "Nicht eingeloggt";
-      }
+      return store.getters.isLoggedIn;
     }
   },
 
   methods: {
-    logIn: function(){
-      axios
-          //172.17.100.2 host IP address in Nox player
-          .post('http://172.17.100.2:8000/api/login', {
-            email: 'jan@web.de',
-            password: 'jan'
-          })
-          .then(response => {
-              this.data = response.data;
-
-              if(Object.keys(this.data).includes("token")){
-                this.data = this.data;
-                store.commit('setUser', this.data.user);
-                store.commit('login');
-                store.commit('setToken', this.data.token);
-                this.data = "success";
-              }
-              else{
-                this.data = "failed";
-              }
-            })
+    isLoggedIn: function(){
+      return store.getters.isLoggedIn;
     },
+
     logOut: function(){
       store.commit('logout');
+      this.navigation.navigate('LogIn');
     }
   }
 }
 </script>
 
 <style>
-.logInFormText{
-  width: 150px;
-}
-
-.logInFormInput{
-  width: 150px;
-  border-color: #3fc601;
-  border-width: 1px;
-}
-
-.logInFormLine{
-  flex-direction: row;
-}
 
 </style>
