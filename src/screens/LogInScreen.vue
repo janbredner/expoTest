@@ -12,10 +12,10 @@
       </view>
       <text-input class="logInFormInput" v-model="password" />
     </view>
-    <app-button title="Log-in"></app-button>
-    <button title="real log-in atm" :on-press="logIn"></button>
+    <app-button title="Log-in" :action="logIn"></app-button>
+    <button title="fast test logIn" :on-press="logInFast"></button>
     <counter></counter>
-    <text>{{data}}</text>
+    <text>{{message}}</text>
   </view>
 </template>
 
@@ -27,17 +27,8 @@ import AppButton from "../components/base/Button";
 import axios from "axios";
 import store from '../store';
 
-
 export default {
   components: {Counter, AppText, AppButton},
-
-  data: function() {
-    return {
-      email: '',
-      password: '',
-      data: '',
-    };
-  },
 
   props: {
     navigation: {
@@ -52,25 +43,52 @@ export default {
   },
 
   computed:{
-    user(){
-      return store.getters.getUser;
+    email:{
+      get(){
+        return store.getters.getEmail;
+      },
+      set(value){
+        store.commit('setEmail', value)
+      }
     },
 
-    token(){
-      return store.getters.getToken;
+    password:{
+      get(){
+        return store.getters.getPassword;
+      },
+      set(value){
+        store.commit('setPassword', value)
+      }
     },
 
-    loggedIn(){
-      return store.getters.isLoggedIn;
-    }
+    message(){ return store.getters.getMessage },
   },
 
   methods: {
-    isLoggedIn: function(){
-      return store.getters.isLoggedIn;
+    logIn: async function(){
+      await axios
+          //172.17.100.2 host IP address in Nox player
+          .post('http://172.17.100.2:8000/api/login', {
+            email: store.getters.getEmail,
+            password: store.getters.getPassword
+          })
+          .then(response => {
+            this.data = response.data;
+
+            if (Object.keys(this.data).includes("token")) {
+              this.data = this.data;
+              store.commit('setUser', this.data.user);
+              store.commit('login');
+              store.commit('setToken', this.data.token);
+              store.commit('setMessage', '');
+              this.navigation.navigate('Home');
+            } else {
+              store.commit('setMessage', 'Falsche logIn Daten!');
+            }
+          });
     },
 
-    logIn: async function () {
+    logInFast: async function () {
       await axios
           //172.17.100.2 host IP address in Nox player
           .post('http://172.17.100.2:8000/api/login', {

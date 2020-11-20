@@ -1,39 +1,46 @@
 import Vuex from 'vuex'
 import Vue from 'vue-native-core'
+import axios from "axios";
+import VueAxios from "vue-axios";
 
 Vue.use(Vuex)
+Vue.use(VueAxios, axios)
 
 const store = new Vuex.Store({
 
     state: {
         counter: 0,
-        items:[
-            {
-                id: 1,
-                message: 'asdf'
-            } ,
-            {
-                id: 2,
-                message: 'fdsa'
-            },
-            {
-                id: 3,
-                message: 'vcxy'
-            }
-        ],
         user: null,
         loggedIn: false,
         token: '',
+        email: '',
+        password: '',
+        cars:'',
+
+        //verwendet zum Anzeigen von reinen Daten- wird später entfernt
+        message: 'message',
     },
 
     getters: {
 
-        getCounter(state, getters){
-            return state.counter;
+        getMessage(state){
+            return state.message;
         },
 
-        getItems(state, getters){
-            return state.items;
+        getCars(state){
+            return state.cars;
+        },
+
+        getPassword(state){
+            return state.password;
+        },
+
+        getEmail(state){
+            return state.email;
+        },
+
+        getCounter(state, getters){
+            return state.counter;
         },
 
         getUser(state, getters){
@@ -50,10 +57,33 @@ const store = new Vuex.Store({
     },
 
     actions: {
+        loadCars({state, commit}){
+            axios
+                //172.17.100.2 host IP address in Nox player
+                .get('http://172.17.100.2:8000/api/cars')
+                .then(response => (commit('setCars', response.data)))
+        },
+
 
     },
 
     mutations: {
+
+        setMessage(state, message){
+            state.message = message;
+        },
+
+        setCars(state, cars){
+            state.cars = cars;
+        },
+
+        setPassword(state,password){
+            state.password = password;
+        },
+
+        setEmail(state,email){
+            state.email = email;
+        },
 
         setCounter(state, counter){
             state.counter = counter;

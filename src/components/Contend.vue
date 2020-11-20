@@ -23,11 +23,5 @@ export default {
       text: '',
     };
   },
-
-  methods: {
-  }
 }
 </script>
-
-<style>
-</style>

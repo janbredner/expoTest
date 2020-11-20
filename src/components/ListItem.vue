@@ -11,6 +11,7 @@ import store from '../store';
 
 export default{
   components:{AppText},
+
   computed: {
     counter(){
       return 100 - store.getters.getCounter;
@@ -18,7 +19,3 @@ export default{
   }
 }
 </script>
-
-<style>
-
-</style>

@@ -13,16 +13,11 @@ import ListItem from "./ListItem";
 import store from '../store';
 
 export default {
-  components: {ListItem, AppText, AppButton},
-  data: function() {
-    return {
 
-    };
-  },
+  components: {ListItem, AppText, AppButton},
+
   computed: {
-    counter (){
-      return store.getters.getCounter;
-    }
+    counter () { return store.getters.getCounter; }
   },
 
   methods: {

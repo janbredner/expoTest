@@ -1,5 +1,5 @@
 <template>
-  <view class="test">
+  <view>
       <list-item></list-item>
       <contend></contend>
   </view>
@@ -11,12 +11,8 @@ import ListItem from "../components/ListItem";
 import store from "../store";
 
 export default {
-  components: {Contend, ListItem},
-  data: function() {
-    return {
 
-    };
-  },
+  components: {Contend, ListItem},
 
   props: {
     navigation: {
@@ -31,16 +27,7 @@ export default {
   },
 
   methods: {
-    goToHomeScreen() {
-      this.navigation.navigate('Home');
-    },
+
   }
 }
 </script>
-
-<style>
-.test{
-  height: 100%;
-}
-
-</style>
