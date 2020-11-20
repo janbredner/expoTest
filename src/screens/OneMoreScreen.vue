@@ -38,8 +38,8 @@ export default {
   },
 
   methods: {
-    loadCars: function(){
-        store.dispatch('loadCars');
+    async loadCars(){
+        await store.dispatch('loadCars');
     },
   }
 }

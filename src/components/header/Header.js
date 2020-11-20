@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 const windowWidth = Dimensions.get('window').width;
 
-export default function Header({navigation, title, loggedIn}) {
+export default function Header({navigation, title, loggedIn, user}) {
     if(!loggedIn){
         return (
             <View>
@@ -16,6 +16,7 @@ export default function Header({navigation, title, loggedIn}) {
                             <Text style={styles.text}>
                                 {title}
                             </Text>
+                            <Text style={styles.text}>{user}</Text>
                         </View>
                     </View>
                 </LinearGradient>
@@ -35,6 +36,7 @@ export default function Header({navigation, title, loggedIn}) {
                             </Text>
                         </View>
                         <View style={styles.menue}>
+                            <Text style={styles.text}>{user}</Text>
                             <TouchableOpacity style={styles.button}
                                               onPress={() => {
                                                   navigation.navigate('Home');
@@ -59,13 +61,13 @@ export default function Header({navigation, title, loggedIn}) {
                 </LinearGradient>
             </View>
         );
-    }
+    }ß
 }
 
 
 const styles = StyleSheet.create({
     text:{
-        marginLeft: 10,
+        marginHorizontal: 10,
         color: '#034001',
     },
     container:{

@@ -15,6 +15,7 @@ import LogInScreen from "./src/screens/LogInScreen";
 import Header from "./src/components/header/Header";
 
 import React from 'react';
+import store from "./src/store";
 
 const StackNavigator = createStackNavigator(
     {
@@ -22,7 +23,10 @@ const StackNavigator = createStackNavigator(
         screen: LogInScreen,
         navigationOptions: ({navigation}) => {
           return {
-            headerTitle: () => <Header navigation={navigation} title='LogIn' loggedIn={false}/>,
+            headerTitle: () => <Header navigation={navigation}
+                                       title='LogIn'
+                                       loggedIn={false}
+                                       user=''/>,
           };
         }
       },
@@ -31,7 +35,10 @@ const StackNavigator = createStackNavigator(
         screen: HomeScreen,
         navigationOptions: ({navigation}) => {
           return {
-            headerTitle: () => <Header navigation={navigation} title='Home' loggedIn={true}/>,
+            headerTitle: () => <Header navigation={navigation}
+                                       title='Home'
+                                       loggedIn={true}
+                                       user={store.getters.getUser.name}/>,
           };
         }
       },
@@ -40,7 +47,10 @@ const StackNavigator = createStackNavigator(
         screen: DetailScreen,
         navigationOptions: ({navigation}) => {
           return {
-            headerTitle: () => <Header navigation={navigation} title='Detail' loggedIn={true}/>,
+            headerTitle: () => <Header navigation={navigation}
+                                       title='Detail'
+                                       loggedIn={true}
+                                       user={store.getters.getUser.name}/>,
           };
         }
       },
@@ -49,7 +59,10 @@ const StackNavigator = createStackNavigator(
         screen: OneMoreScreen,
         navigationOptions: ({navigation}) => {
           return {
-            headerTitle: () => <Header navigation={navigation} title='OneMore' loggedIn={true}/>,
+            headerTitle: () => <Header navigation={navigation}
+                                       title='OneMore'
+                                       loggedIn={true}
+                                       user={store.getters.getUser.name}/>,
           };
         }
       }

@@ -18,7 +18,7 @@ const store = new Vuex.Store({
         cars:'',
 
         //verwendet zum Anzeigen von reinen Daten- wird später entfernt
-        message: 'message',
+        message: '',
     },
 
     getters: {
@@ -57,8 +57,8 @@ const store = new Vuex.Store({
     },
 
     actions: {
-        loadCars({state, commit}){
-            axios
+        async loadCars({state, commit}){
+            await axios
                 //172.17.100.2 host IP address in Nox player
                 .get('http://172.17.100.2:8000/api/cars')
                 .then(response => (commit('setCars', response.data)))
@@ -144,7 +144,9 @@ const store = new Vuex.Store({
 
         logout(state){
           state.loggedIn = false;
-          state.user = null;
+          state.user = [{
+              name: '',
+          }];
           state.token = '';
         }
     },
