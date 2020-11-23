@@ -89,7 +89,7 @@ const StackNavigator = createStackNavigator(
 const AppNavigator = createAppContainer(StackNavigator);
 
 export default {
-  components: { AppNavigator },
+  components: {AppNavigator },
 }
 </script>
 

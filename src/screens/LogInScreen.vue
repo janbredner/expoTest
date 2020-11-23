@@ -1,5 +1,6 @@
 <template>
-  <view>
+  <view class="container">
+
     <background></background>
 
     <view class="logInFormLine">
@@ -14,10 +15,11 @@
       </view>
       <text-input class="logInFormInput" v-model="password" />
     </view>
-    <app-button title="Log-in" :action="logIn"></app-button>
+    <view class="logInButton">
+      <app-button title="Log-in" :action="logIn"></app-button>
+    </view>
     <button title="fast test logIn" :on-press="logInFast"></button>
     <text>{{message}}</text>
-
   </view>
 </template>
 
@@ -83,16 +85,27 @@ export default {
 </script>
 
 <style>
+.container {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.logInButton{
+  width: 300px;
+}
+
 .logInFormText{
   width: 150px;
 }
 
 .logInFormInput{
   width: 150px;
-  border-color: #3fc601;
+  border-color: #32327d;
   border-width: 1px;
   margin: 2px;
   padding-left: 5px;
+  color: #32327d;
 }
 
 .logInFormLine{

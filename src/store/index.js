@@ -22,18 +22,18 @@ const store = new Vuex.Store({
         //verwendet zum Anzeigen von reinen Daten- wird später entfernt
         message: '',
 
-        buttonTextColor: "#ebfcc2",
-        buttonInnerColor: '#51bf46',
-        buttonOuterColor: '#187e08',
+        buttonTextColor: "#e6e6ff",
+        buttonInnerColor: '#4b4b96',
+        buttonOuterColor: '#32327d',
 
-        textNormalColor: '#073903',
+        textNormalColor: '#32327d',
 
-        backgroundUpperColor: '#bee977',
-        backgroundLowerColor: '#55ba0e',
+        backgroundUpperColor: '#d2d2e6',
+        backgroundLowerColor: '#a7a7cf',
 
-        headerTextColor: '#073903',
-        headerUpperColor: '#bee977',
-        headerLowerColor: '#55ba0e',
+        headerTextColor: '#32327d',
+        headerUpperColor: '#d2d2e6',
+        headerLowerColor: '#a7a7cf',
     },
 
     getters: {
